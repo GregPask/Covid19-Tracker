@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Covid 19 Tracker</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="./static/styles/app.css" />
+</head>
+
+
+
+
+
+<body onload="startFunc()">
+
+    <div id="left" class="z-depth-2">
+        <h3>Covid Tracker App</h3>
+        <div class="hr"></div>
+
+
+        <ul>
+            <li id="left-home" class="active">
+                <i class="fas fa-home"></i>
+                <a class="hidden">Home</a>
+            </li>
+
+            <li id="left-search">
+                <i class="fas fa-search"></i>
+                <a class="hidden">Search</a>
+            </li>
+
+
+            <li id="left-about">
+                <i class="fas fa-address-card"></i>
+                <a class="hidden">Facts</a>
+            </li>
+        </ul>
+
+
+
+    </div>
+
+
+
+    <!-- Tab 1 of 3 Right side -->
+    <div id="right" class="show">
+        <h3>Covid 19 Pandemic Live Data</h3>
+
+        <div id="facts" class="grid-4">
+            <div class="card z-depth-2">
+                <h4>Total Cases:</h4>
+                <p class="blue" id="total-cases"></p>
+            </div>
+
+            <div class="card z-depth-2">
+                <h4>Total Deaths:</h4>
+                <p class="red" id="total-deaths"></p>
+            </div>
+
+            <div class="card z-depth-2">
+                <h4>Total Recovered:</h4>
+                <p class="green" id="total-recovered"></p>
+            </div>
+
+            <div class="card z-depth-2">
+                <h4>Countries Affected:</h4>
+                <p class="yellow" id="total-countries"></p>
+            </div>
+        </div> <!-- End of Grid 4-->
+
+
+
+
+
+        <div class="grid-2">
+            <div class="card z-depth-2">
+                <div class="card-header">
+                    <h3>Covid Cases Worldwide Map</h3>
+                </div>
+                <div class="card-body">
+                    <div id="mapid" class="z-depth-2"></div>
+                </div>
+            </div>
+
+            <div class="card z-depth-2">
+                <div id="card-header-flex">
+                    <h3>Covid Charts</h3>
+
+                    <select name="" id="chart-dropdown">
+                        <option value="1">Daily Change</option>
+                        <option value="2">Total Cases</option>
+                    </select>
+
+
+                </div>
+                <div class="card-body">
+                    <div id="chart"></div>
+                </div>
+            </div>
+
+        </div> <!-- End of Grid 2-->
+
+
+
+        <div id="table" class="card z-depth-2">
+            <div class="card-header">
+                <h3>Covid Stats per Country (215 results)</h3>
+            </div>
+
+            <div class="card-body">
+                <table class="stripe hover" id="table1">
+                    <thead>
+                        <th>Country</th>
+                        <th>cases</th>
+                        <th>deaths</th>
+                        <th>recovered</th>
+                        <th>tests</th>
+                        <th>Deaths/Million</th>
+                        <th>todayCases</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div> <!-- End of Right -->
+
+    <!-- Tab 2 of 3 Right side -->
+    <div id="right-search" class="">
+
+
+
+        <div class="grid-2">
+            <div class="card z-depth-2">
+                <div id="card-header-flex">
+                    <h3>Search Countries</h3>
+
+
+                    <select class="dropdown1" name="" id=""></select>
+
+                </div>
+                <div class="card-body">
+
+                    <div id="chart2"></div>
+                </div>
+            </div>
+
+            <div id="chosen-wrap" class="card z-depth-2" style="position: relative;">
+
+
+                <div id="facts-spinner" class="lds-spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+
+                <div id="chosen-country" class="card-header">
+
+                </div>
+                <div id="country-facts" class="card-body">
+
+                </div>
+            </div>
+
+        </div> <!-- End of Grid 2-->
+
+
+
+    </div> <!-- End of Right Search -->
+
+
+    <!-- Tab 3 of 3 Right side -->
+    <div id="right-facts" class="">
+
+        <div class="card z-depth-2">
+            <h3>Coronavirus Symptoms (COVID-19)</h3>
+
+            <p>People with COVID-19 have had a wide range of symptoms reported – ranging from mild symptoms to severe
+                illness. These symptoms may appear 2-14 days after exposure to the virus:</p>
+
+
+            <ul>
+                <li>Fever</li>
+                <li>Cough</li>
+                <li>Shortness of breath or difficulty breathing</li>
+                <li>Chills</li>
+                <li>Repeated shaking with chills</li>
+                <li>Muscle pain</li>
+                <li>Headache</li>
+                <li>Sore throat</li>
+                <li>New loss of taste or smell</li>
+            </ul>
+        </div><br />
+
+
+        <div class="card z-depth-2">
+            <h3>Coronavirus Incubation Period</h3>
+
+
+
+
+            <ul>
+                <li>2-14 days represents the current official estimated range for the novel coronavirus COVID-19.</li>
+                <li>However, a case with an incubation period of 27 days has been reported by Hubei Province local
+                    government on Feb. 22 [12]</li>
+                <li>In addition, a case with an incubation period of 19 days was observed in a JAMA study of 5 cases
+                    published on Feb. 21. [13]</li>
+                <li>An outlier of a 24 days incubation period had been for the first time observed in a Feb. 9
+                    study.[11] WHO said at the time that this could actually reflect a second exposure rather than a
+                    long incubation period, and that it wasn't going to change its recommendations.</li>
+                <li>Period can vary greatly among patients.</li>
+                <li>Mean incubation period observed:
+                    3.0 days (0 - 24 days range, study based on 1,324 cases)
+                    5.2 days (4.1 - 7.0 days range, based on 425 cases).</li>
+                <li>Mean incubation period observed in travelers from Wuhan:
+                    6.4 days (range from 2.1 to 11.1 days).</li>
+
+            </ul>
+        </div><br />
+
+        <div class="card z-depth-2">
+            <h3>Coronavirus (COVID-19) Mortality Rate</h3>
+
+            <p>Globally, about 3.4% of reported COVID-19 cases have died. By comparison, seasonal flu generally kills
+                far fewer than 1% of those infected</p>
+
+
+        </div><br />
+
+
+    </div> <!-- End of Right Facts -->
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/datatables.mark.js@2.0.1/dist/datatables.mark.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="../static/js/all.js"></script>
+</body>
+
+</html>

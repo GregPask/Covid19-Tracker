@@ -1,0 +1,62 @@
+#table1 {
+    height: 100px !important;
+}
+
+.dataTables_scrollBody {
+    border-bottom: 1px solid rgba(47, 47, 47, 0.129) !important;
+    border-top: 1px solid rgba(47, 47, 47, 0.169) !important;
+    overflow-x: hidden;
+
+
+    tr {
+        border: 0 !important;
+
+        &:hover {
+            background-color: #29323722 !important;
+        }
+    }
+
+    tr.show {
+        background-color: rgba(33, 113, 234, 0.742) !important;
+
+        &:hover {
+            background-color: rgba(33, 113, 234, 0.742) !important;
+        }
+
+        td {
+            color: rgb(242, 242, 242) !important;
+        }
+    }
+}
+
+
+td {
+    // border: 1px solid red;
+    max-height: 500px !important;
+    font-size: 0.8rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+table.dataTable thead th,
+table.dataTable thead td {
+    border-bottom: 0px solid rgba(53, 51, 51, 0);
+    border-radius: 0;
+}
+
+
+tbody tr:nth-child(even) {
+    background-color: rgb(255, 255, 255);
+    color: rgba(36, 36, 36, 0.516) !important;
+    font-size: 0.9rem !important;
+    border: 0 !important;
+    border-image-width: 0px !important;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: rgba(193, 221, 234, 0.2304) !important;
+    color: rgba(36, 36, 36, 0.516) !important;
+    font-size: 0.74rem !important;
+    border: 0 !important;
+    border-image-width: 0px !important;
+}
+

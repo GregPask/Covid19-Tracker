@@ -1,0 +1,76 @@
+.hr {
+    width: 100%;
+    background-color: #333;
+    height: 1px;
+}
+
+
+.z-depth-2 {
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.109),
+                0 1px 10px 0 rgba(0, 0, 0, 0.189),
+                0 2px 4px -1px rgba(0, 0, 0, 0.109);
+}
+
+
+
+
+.red {
+    color: rgb(192, 17, 17) !important;
+}
+
+.green {
+    color: green !important;
+}
+
+.yellow {
+    color: rgb(250, 109, 15) !important;
+}
+
+.blue {
+    color: rgb(30, 133, 202) !important;
+}
+
+
+
+// Maps | Charts | Tables *** ==============================
+
+#mapid {
+    height: 100%;
+}
+
+
+#chart {
+    height: 100%;
+}
+
+
+#table {
+    height: 650px;
+    margin: 20px 0 40px;
+    padding: 0;
+}
+
+#table1 {
+    height: 100px !important;
+    overflow: hidden !important;
+}
+
+
+
+#country-facts {
+    overflow: auto;
+    height: calc(100% - 70px);
+
+    label {
+        color: rgb(41, 116, 185);
+        font-weight: bold;
+        margin-bottom: -25px;
+    }
+
+    p {
+        margin-top: -10px;
+        margin-bottom: -20px;
+    }
+}
+
+
