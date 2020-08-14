@@ -643,6 +643,15 @@ $("#left-home").on("click", function () {
     setTimeout(() => {
         myMap.invalidateSize()
     }, 10);
+
+
+
+    $.fn.dataTable.tables({
+        visible: true,
+        api: true
+    }).columns.adjust();
+
+
 });
 
 $("#left-about").on("click", function () {
